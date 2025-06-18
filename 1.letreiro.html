@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Letreiro do Hotel</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #111;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .letreiro {
+      background-color: #222;
+      border: 3px solid #f5c518;
+      color: #f5c518;
+      padding: 30px 50px;
+      font-size: 2rem;
+      text-align: center;
+      border-radius: 10px;
+      box-shadow: 0 0 20px #f5c518;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .nome-hotel {
+      font-weight: bold;
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+    }
+
+    .status {
+      font-style: italic;
+    }
+
+    .mensagem {
+      margin-top: 10px;
+      font-size: 1rem;
+      color: #ccc;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="letreiro" id="letreiro" type="mouseover">
+    <div class="nome-hotel">Hotel Paraíso</div>
+    <div class="status" id="status">Vagas disponíveis</div>
+    <div class="mensagem" id="mensagem">Consulte a recepção para mais informações.</div>
+  </div>
+
+  <script>
+    const letreiro = document.getElementById("letreiro");
+    const status = document.getElementById("status");
+    const mensagem = document.getElementById("mensagem");
+
+    letreiro.addEventListener("mouseover", function (event) {
+      if (event.target.getAttribute("type") === "mouseover") {
+        status.textContent = "Vagas esgotadas";
+        mensagem.textContent = "Oops.. acho que me enganei 🤣";
+      }
+    });
+
+    letreiro.addEventListener("mouseout", function () {
+      status.textContent = "Vagas disponíveis";
+      mensagem.textContent = "Você é muito sortudo 👌😁";
+    });
+  </script>
+
+</body>
+</html>

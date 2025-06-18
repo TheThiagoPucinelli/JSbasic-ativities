@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Formulário com Nome em Maiúsculas</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #0a4486;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .form-box {
+      background-color: #fff;
+      padding: 30px 40px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      width: 300px;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    label {
+      font-weight: bold;
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    input[type="text"] {
+      width: 100%;
+      padding: 8px 10px;
+      font-size: 16px;
+      border: 2px solid #ccc;
+      border-radius: 4px;
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="form-box">
+    <h2>Formulário</h2>
+    <form>
+      <label for="nome">Nome:</label>
+      <input type="text" id="nome" placeholder="Digite seu nome">
+    </form>
+  </div>
+
+  <script>
+    const nomeInput = document.getElementById('nome');
+
+    // Quando o usuário sai do campo (blur), converte para maiúsculas.
+    nomeInput.addEventListener('blur', function () {
+      nomeInput.value = nomeInput.value.toUpperCase();
+    });
+  </script>
+
+</body>
+</html>

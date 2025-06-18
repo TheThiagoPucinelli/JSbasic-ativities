@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<title>Galão com Torneira e Bolhas</title>
+<style>
+  body {
+    background-color: #e0f7fa;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-family: Arial, sans-serif;
+  }
+  #cont {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  #galao {
+    width: 200px;
+    height: 300px;
+    border: 4px solid #0288d1;
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+    background-color: #fff;
+  }
+  #aguaCont {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    transition: height 0.1s linear;
+    overflow: visible;
+  }
+  #agua {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  #bolhasCont {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    overflow: visible;
+  }
+  .bolha {
+    position: absolute;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.7);
+    border-radius: 50%;
+    opacity: 0.8;
+    animation-name: bolhaSubindo;
+    animation-timing-function: ease-out;
+    animation-fill-mode: forwards;
+  }
+  @keyframes bolhaSubindo {
+    0% {
+      transform: translateY(0) scale(1);
+      opacity: 0.8;
+    }
+    100% {
+      transform: translateY(-250px) scale(0.5);
+      opacity: 0;
+    }
+  }
+  #torneira {
+    margin-top: 20px;
+    width: 100px;
+    cursor: pointer;
+    user-select: none;
+  }
+</style>
+</head>
+<body>
+
+<div id="cont">
+  <div id="galao">
+    <div id="aguaCont">
+      <img id="agua" src="/img/agua.png" alt="Água cheia">
+    </div>
+    <div id="bolhasCont"></div>
+  </div>
+  <img id="torneira" src="/img/1.png" alt="Torneira fechada">
+</div>
+
+<script>
+
+  const tor = document.getElementById('torneira');
+  const agCont = document.getElementById('aguaCont');
+  const ag = document.getElementById('agua');
+  const bolhasCont = document.getElementById('bolhasCont');
+
+  let altAtual = 100; // altura atual da água (%)
+  let intEsvaziar = null; // intervalo que diminui a água
+  let intBolhas = null;   // intervalo que cria bolhas
+
+  // Animação de bolhas.
+  function criaBolha() {
+    const bolha = document.createElement('div');
+    bolha.classList.add('bolha');
+    const tam = Math.random() * 15 + 10; 
+    bolha.style.width = tam + 'px';
+    bolha.style.height = tam + 'px';
+    bolha.style.left = (Math.random() * 100) + '%'; 
+    const dur = Math.random() * 2 + 2; 
+    bolha.style.animationDuration = dur + 's';
+
+    bolhasCont.appendChild(bolha);
+
+    // Remove a bolha após a animação acabar
+    setTimeout(() => bolha.remove(), dur * 1000);
+  }
+
+
+
+
+
+  // Começa a esvaziar o galão e cria bolhas
+  function startEsvaziar() {
+    tor.src = '/img/2.png';       
+    ag.src = '/img/agua2.png';    
+
+    if (intEsvaziar) clearInterval(intEsvaziar);
+    if (intBolhas) clearInterval(intBolhas);
+
+    // diminui altura da água a cada 100ms
+    intEsvaziar = setInterval(() => {
+      if (altAtual > 0) {
+        altAtual -= 0.5;
+        agCont.style.height = altAtual + '%';
+      } else {
+        clearInterval(intEsvaziar);
+        clearInterval(intBolhas);
+      }
+    }, 100);
+
+    // cria bolhas a cada 300ms
+    intBolhas = setInterval(criaBolha, 300);
+  }
+
+
+
+  
+
+  // Para o esvaziamento e as bolhas, restaura imagens
+  function stopEsvaziar() {
+    tor.src = '/img/1.png';      // torneira fechada
+    ag.src = '/img/agua.png';    // água cheia
+
+    if (intEsvaziar) clearInterval(intEsvaziar);
+    if (intBolhas) clearInterval(intBolhas);
+  }
+
+  tor.addEventListener('mousedown', startEsvaziar);
+  tor.addEventListener('mouseup', stopEsvaziar);
+  tor.addEventListener('mouseleave', stopEsvaziar);
+</script>
+
+</body>
+</html>

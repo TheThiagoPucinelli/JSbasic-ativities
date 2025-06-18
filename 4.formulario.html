@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Validação de CPF</title>
+  <style>
+    body {
+      background-color: #0b509e;
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .form-box {
+      background-color: #fff;
+      padding: 30px 40px;
+      border-radius: 8px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+      width: 300px;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    label {
+      font-weight: bold;
+      margin-bottom: 5px;
+      display: block;
+      color: #444;
+    }
+
+    input[type="text"] {
+      width: 100%;
+      padding: 8px 10px;
+      font-size: 16px;
+      border: 2px solid #ccc;
+      border-radius: 4px;
+      outline: none;
+      transition: border-color 0.3s, background-color 0.3s;
+    }
+
+    input[type="text"]:focus {
+      border-color: #007BFF;
+    }
+
+    .mensagem {
+      font-size: 12px;
+      color: #888;
+      margin-top: 5px;
+    }
+
+    .erro {
+      border-color: red !important;
+      background-color: #ffe6e6;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="form-box">
+    <h2>Formulário de CPF</h2>
+    <form>
+      <label for="cpf">CPF:</label>
+      <input type="text" id="cpf" maxlength="11" placeholder="Apenas números">
+      <div class="mensagem">Digite seu CPF sem pontos ou traços.</div>
+    </form>
+  </div>
+
+  <script>
+    const cpfInput = document.getElementById('cpf');
+
+    cpfInput.addEventListener('keypress', function (event) {
+      const keyCode = event.keyCode;
+
+      // Permitir apenas números (0 a 9)
+      if (keyCode < 48 || keyCode > 57) {
+        event.preventDefault(); // Bloqueia o caractere
+        cpfInput.classList.add('erro'); // Estilo de erro
+        alert("Apenas números são permitidos no campo CPF!. 🤬"); // Alerta
+      } else {
+        cpfInput.classList.remove('erro'); // Remove erro se válido
+      }
+    });
+
+    // Garante que colagens com letras também sejam bloqueadas visualmente
+    cpfInput.addEventListener('input', function () {
+      if (/^\d*$/.test(cpfInput.value)) {
+        cpfInput.classList.remove('erro');
+      } else {
+        cpfInput.classList.add('erro');
+      }
+    });
+  </script>
+
+</body>
+</html>

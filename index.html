@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Menu Principal e Exercícios</title>
+  <link rel="stylesheet" href="/menu.css" />
+  
+</head>
+<body>
+
+  <nav>
+    <ul>
+      <li><a href="/1.letreiro.html" tabindex="1">1# Letreiro</a></li>
+      <li><a href="/2.lampada.html" tabindex="2">2# Lâmpada</a></li>
+      <li><a href="/3.agua.html" tabindex="3">3# Galão de Água</a></li>
+      <li><a href="/4.formulario.html" tabindex="4">4# Formulário</a></li>
+      <li><a href="/5.uppercase.html" tabindex="5">5# Uppercase</a></li>
+      <li><a href="/6.target_type.html" tabindex="6">6# Tager Type</a></li>
+    </ul>
+  </nav>
+
+  <div class="cards-container">
+    <div class="card">
+      <h3>1. Letreiro de Hotel</h3>
+      <p>
+Crie um letreiro de hotel com o nome do lugar e a indicação de vagas. 
+Ao passar o cursor do mouse sobre o letreiro, a disponibilidade de vagas deve mudar. 
+Ao retirar o cursor do letreiro, a disponibilidade volta ao original. 
+Não use imagens, apenas HTML e CSS para montar a estrutura e JS para disparar os eventos do mouse. 
+Pode-se usar a propriedade type para identificar o tipo de evento.
+      </p>
+      <button onclick="location.href='/1.letreiro.html'">Ir para atividade</button>
+    </div>
+
+    <div class="card">
+      <h3>2. Lâmpada e Interruptor</h3>
+      <p>
+Crie uma estrutura de marcação HTML contendo a imagem de uma lâmpada e de um interruptor. 
+Ao clicar no interruptor, a lâmpada deve acender e o interruptor mudar de posição. 
+Ao clicar novamente, apaga-se a lâmpada e o interruptor volta a sua posição inicial.
+      </p>
+      <button onclick="location.href='/2.lampada.html'">Ir para atividade</button>
+    </div>
+
+    <div class="card">
+      <h3>3. Galão de Água com Torneira</h3>
+      <p>
+Crie um galão de água contendo uma torneira. O galão de água pode ser um elemento DIV com uma imagem de fundo ilustrando a água. A torneira pode ser uma imagem também.  
+
+Ao pressionar a torneira, mude a imagem para uma torneira pingando e simule o efeito de redução do nível da água – altere entre duas imagens semelhantes e modifique a posição da imagem de fundo. 
+Enquanto a torneira estiver pressionada, o efeito é contínuo. Ao soltar a torneira, interrompe-se a redução do nível da água e altera-se a imagem da torneira para a original.
+      </p>
+      <button onclick="location.href='/3.agua.html'">Ir para atividade</button>
+    </div>
+
+    <div class="card">
+      <h3>4. Validação de CPF</h3>
+      <p>
+Crie um formulário contendo um campo de CPF. 
+Valide este campo para aceitar apenas números usando a propriedade keyCode. 
+O link a seguir irá auxiliá-los: 
+http://www.w3schools.com/jsref/event_preventdefault.asp
+      </p>
+      <button onclick="location.href='/4.formulario.html'">Ir para atividade</button>
+    </div>
+
+    <div class="card">
+      <h3>5. Campo Nome com Maiúsculas</h3>
+      <p>
+Crie um formulário contendo um campo de NOME. 
+Após o usuário preencher o campo com as informações, mude todas as letras para maiúsculas usando o método toUpperCase().
+      </p>
+      <button onclick="location.href='/5.uppercase.html'">Ir para atividade</button>
+    </div>
+
+    <div class="card">
+      <h3>6. Estilizar Campos Nome e CPF</h3>
+      <p>
+Ao selecionar o campo NOME e CPF para inserir as informações, altere a cor da borda e a cor de fundo dos campos. 
+Ao trocar de campo, retorne com a formatação original – use apenas uma função para os dois eventos. 
+Use a propriedade event.target para identificar qual campo deve ser estilizado e a propriedade event.type para identificar qual evento foi acionado.
+      </p>
+      <button onclick="location.href='/6.target_type.html'">Ir para atividade</button>
+    </div>
+  </div>
+
+</body>
+</html>

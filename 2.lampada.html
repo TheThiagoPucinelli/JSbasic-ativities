@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Lâmpada e Interruptor</title>
+  <style>
+    body {
+      background-color: black;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 50px;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 30px;
+    }
+
+    .lampada, .interruptor {
+      width: 300px;
+      height: auto;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+    }
+
+    .interruptor:active {
+      transform: scale(0.95);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <img id="lampada" class="lampada" src="/img/lamp_off.png" alt="Lâmpada">
+    <img id="interruptor" class="interruptor" src="/img/int_off.png" alt="Interruptor">
+  </div>
+
+  <script>
+    const lampada = document.getElementById('lampada');
+    const interruptor = document.getElementById('interruptor');
+
+    let ligada = false;
+
+    interruptor.addEventListener('click', function () {
+      ligada = !ligada;
+
+      if (ligada) {
+        lampada.src = "/img/lamp_on.png";       
+        interruptor.src = "/img/int_on.png";    
+        document.body.style.backgroundColor = "#fffbe6"; 
+      } else {
+        lampada.src = "/img/lamp_off.png";      
+        interruptor.src = "/img/int_off.png";   
+        document.body.style.backgroundColor = "black"; 
+      }
+    });
+  </script>
+
+</body>
+</html>
